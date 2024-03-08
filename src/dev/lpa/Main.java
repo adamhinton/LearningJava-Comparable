@@ -1,6 +1,8 @@
 package dev.lpa;
 
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
@@ -39,29 +41,49 @@ public class Main {
         Arrays.sort(students);
         System.out.println(Arrays.toString(students));
 
+//         prints 32, the diff bw any uppercase ltr and its lowercase self
         System.out.println("result: " + tim.compareTo(new Student("TIM")));
 
 
     }
 }
 
+class StudentGPAComparator implements Comparator<Student>{
+   @Override
+    public int compare(Student o1, Student o2){
+        return (o1.gpa + o1.name).compareTo(o2.gpa + o2.name);
+    }
+}
+
 class Student implements Comparable<Student> {
-    private String name;
+
+    private static int LAST_ID = 1000;
+    private static Random random = new Random();
+    String name;
+    private int id;
+    protected double gpa;
+
+
 
     public Student(String name) {
         this.name = name;
+        // Any new instance increments this. Cool
+        id=LAST_ID++;
+        gpa = random.nextDouble(1.0, 4.0);
     }
 
     @Override
     public int compareTo(Student s) {
-        return name.compareTo(s.name);
+        return Integer.valueOf(id).compareTo(Integer.valueOf(s.id));
     }
 
     @Override
     public String toString() {
-        return name;
+        return "%d - %s (%.2f)".formatted(id, name, gpa);
     }
 }
+
+
 
 
 // For `sort` to work on a list the items have to implement Comparable
