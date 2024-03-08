@@ -11,3 +11,7 @@ public class Main {
 // public interface Comparable <T>{
 //    int compareTo(T o);
 //}
+// resulting values:
+// 0: o == this
+// negative value: this < o
+// pos value: this > 0
