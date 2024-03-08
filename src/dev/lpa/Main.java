@@ -42,8 +42,12 @@ public class Main {
         System.out.println(Arrays.toString(students));
 
 //         prints 32, the diff bw any uppercase ltr and its lowercase self
-        System.out.println("result: " + tim.compareTo(new Student("TIM")));
+//        System.out.println("result: " + tim.compareTo(new Student("TIM")));
 
+        Comparator<Student> gpaSorter = new StudentGPAComparator();
+        // Arrays.sort takes a comparator instance as a second arg
+        // And we've overriden Comparator's compare() method
+        Arrays.sort(students, gpaSorter);
 
     }
 }
