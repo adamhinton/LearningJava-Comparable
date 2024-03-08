@@ -10,7 +10,7 @@ public class Main {
 
         for(Integer i : others){
             int val = five.compareTo(i);
-            System.out.printf("%d %s %d: compareTo = %d%n", five, (val == 0 ? "==" : (val < 0) ? "<" : ">"), i, val);
+//            System.out.printf("%d %s %d: compareTo = %d%n", five, (val == 0 ? "==" : (val < 0) ? "<" : ">"), i, val);
         }
 
         String banana = "banana";
@@ -20,14 +20,49 @@ public class Main {
             int val = banana.compareTo(s);
 
             // doesn't just print -1, 0 or 1
-            System.out.printf("%s %s %s: compareTo = %d%n", banana, (val == 0 ? "==" : (val < 0) ? "<" : ">"), s, val);
+//            System.out.printf("%s %s %s: compareTo = %d%n", banana, (val == 0 ? "==" : (val < 0) ? "<" : ">"), s, val);
         }
 
         Arrays.sort(fruit);
-        System.out.println(Arrays.toString(fruit));
+//        System.out.println(Arrays.toString(fruit));
+
+//        System.out.println("A:" +(int)'A' + " " + "a:" + (int)'a');
+//        System.out.println("B:" +(int)'B' + " " + "b:" + (int)'b');
+//        System.out.println("P:" +(int)'P' + " " + "p:" + (int)'p');
+
+        Student tim = new Student("Tim");
+        Student[] students = {
+                new Student("Zach"),
+                new Student("Tim"),
+                new Student("Ann"),
+        };
+        Arrays.sort(students);
+        System.out.println(Arrays.toString(students));
+
+        System.out.println("result: " + tim.compareTo(new Student("TIM")));
+
 
     }
 }
+
+class Student implements Comparable<Student> {
+    private String name;
+
+    public Student(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public int compareTo(Student s) {
+        return name.compareTo(s.name);
+    }
+
+    @Override
+    public String toString() {
+        return name;
+    }
+}
+
 
 // For `sort` to work on a list the items have to implement Comparable
 
